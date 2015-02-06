@@ -9,6 +9,8 @@
         <script type="text/javascript">
             
             var deepLinkBase = "indycar://indy.vzw.com";
+
+            var androidDeepLinkBase = "http://indy.vzw.com";
             
             var noAppURL = "http://mobile.vzw.com/indycar";
             
@@ -54,8 +56,10 @@
                                    
                                    },marketTimeout);
                                    
-                                    document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
-                                    document.getElementById('loader').src = deepLink;
+                                    // document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
+                                    // document.getElementById('loader').src = deepLink;
+                                    
+                                    window.location = deepLink;
                                    
                                    // causes popup blocked in browser
                                    // var win = window.open(deepLink, '_blank');
@@ -114,21 +118,19 @@
             
             if (index >= 0 && index < url.length) {
                 
-                var deepLink = deepLinkBase + url.substring(index);
+                
                 
                 
                 
                 if ( (navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i)) ) {
                     
-                    launchiOSApp(deepLink);
+                    launchiOSApp(deepLinkBase + url.substring(index));
                     
                     return;
                     
                 } else if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i)) ) {
                     
-                    //alert('detected Android of some kind');
-                    
-                    launchAndroidApp(deepLink);
+                    launchAndroidApp(androidDeepLinkBase + url.substring(index));
                     
                     return;
                     
