@@ -34,42 +34,39 @@
             function launchAndroidApp(deepLink) {
                 
                   
+                 
                 window.onerror=function() {
                     
                     alert('Scheme registration not detected');
                     
-                    window.location.replace(marketScheme);
+                    window.location = marketScheme;
                     
                 }
                 
                 timer = setTimeout(function() {
                                    
-                                //   if (changeLocation) {
+                                   if (changeLocation) {
                                    
-                                     window.location.replace(marketScheme);
+                                     window.location = marketScheme;
                                    
-                                //   }
+                                   }
                                    
-                                  },marketTimeout);
+                                   },marketTimeout);
                                    
-                                  window.location.replace(deepLink);
-                                        
-                
-  	    	// window.location.replace(deepLink);
-            
-            
-        //     setTimeout(function () {
-                                                        
-        //                                                 setTimeout(function () {
-                                                                   
-        //                                                           window.location = marketScheme;
-                                                                   
-        //                                                           }, 1000);
-                                                        
-        //                                                 }, 3000);
-                
+                                   window.location=deepLink;
+                                   
+                                   // causes popup blocked in browser
+                                   // var win = window.open(deepLink, '_blank');
+                                   // win.focus();
+                                   
+                                   // doesn't work
+                                   //document.write('<iframe name="app" id="app" height="0" width="0" src="' + deepLink + '"></iframe>');
                                    
             }
+                
+                                   
+
+            
         
         
         
