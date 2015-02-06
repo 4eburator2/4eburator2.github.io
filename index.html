@@ -34,28 +34,29 @@
             function launchAndroidApp(deepLink) {
                 
                   
-                // window.onerror=function() {
+                window.onerror=function() {
                     
-                //     alert('Scheme registration not detected');
+                    alert('Scheme registration not detected');
                     
-                //     window.location = marketScheme;
+                    window.location.replace(marketScheme);
                     
-                // }
+                }
                 
-                // timer = setTimeout(function() {
+                timer = setTimeout(function() {
                                    
-                //                 //   if (changeLocation) {
+                                //   if (changeLocation) {
                                    
-                //                      window.location = marketScheme;
+                                     window.location.replace(marketScheme);
                                    
-                //                 //   }
+                                //   }
                                    
-                //                   },marketTimeout);
+                                  },marketTimeout);
                                    
-                //                   window.location=deepLink ;
+                                  window.location.replace(deepLink);
                                         
                 
-  	    	// window.location = deepLink;
+  	    	// window.location.replace(deepLink);
+            
             
         //     setTimeout(function () {
                                                         
