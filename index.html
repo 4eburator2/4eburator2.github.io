@@ -175,7 +175,7 @@
                  // Simple device detection
     var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
         isAndroid = navigator.userAgent.match('Android');
-
+   
     // Mobile
     if (isiOS || isAndroid) {
       // Load our custom protocol in the iframe, for Chrome and Opera this burys the error dialog (which is actually HTML)
@@ -192,8 +192,11 @@
     // Now we just wait for everything to execute, if the user is redirected to your custom app
     // the timeout below will never fire, if a custom app is not present (or the user is on the Desktop)
     // we will replace the current URL with the fallbackLink (store URL or desktop URL as appropriate)
-    window.setTimeout(function (){ window.location.replace(fallbackLink); }, 600);
-            }
+     window.setTimeout(function (){ window.location.replace(marketScheme); }, 600);
+     window.setTimeout(function (){ window.location.replace(fallbackLink); }, 600);
+     window.setTimeout(function (){ window.location.replace(noAppURL); }, 600);
+    
+    }
 
    
 
@@ -207,7 +210,8 @@
 
     */
 
-  })();</script>
+  })();
+  </script>
         <noscript>Javascript must be enabled to Redirect to INDYCAR 13.</noscript>
         
     </body>
