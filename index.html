@@ -14,7 +14,7 @@
             
             var noiOSAppURL = "http://indy.vzw.com/itunes/itunes.html";
             
-            var marketUrl = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
+            var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
             
             var timeout = 5000;
             
@@ -40,7 +40,7 @@
                     
                     alert('Scheme registration not detected');
                     
-                    window.location = marketUrl;
+                    window.location = marketURL;
                     
                 }
                 
@@ -48,13 +48,13 @@
                                    
                                    if (changeLocation) {
                                    
-                                   window.location = marketUrl;
+                                   window.location = marketURL;
                                    
                                    }
                                    
                                    },marketTimeout);
                                    
-                                   window.location=deepLink;
+                                   window.location = deepLink;
                                    
                                    // causes popup blocked in browser
                                    // var win = window.open(deepLink, '_blank');
