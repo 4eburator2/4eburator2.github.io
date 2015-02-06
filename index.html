@@ -14,13 +14,14 @@
             
             var noiOSAppURL = "http://indy.vzw.com/itunes/itunes.html";
             
-            var marketScheme = "market://details?id=com.vzw.indycar";
+            var marketUrl = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
             
             var timeout = 5000;
             
             var marketTimeout = 1000;
             
             var changeLocation = true;
+            
             
             
             document.onfocusin = function() {changeLocation = true};
@@ -33,13 +34,13 @@
             
             function launchAndroidApp(deepLink) {
                 
-                  
-                 
+                
+                
                 window.onerror=function() {
                     
                     alert('Scheme registration not detected');
                     
-                    window.location = marketScheme;
+                    window.location = marketUrl;
                     
                 }
                 
@@ -47,7 +48,7 @@
                                    
                                    if (changeLocation) {
                                    
-                                     window.location = marketScheme;
+                                   window.location = marketUrl;
                                    
                                    }
                                    
@@ -63,10 +64,6 @@
                                    //document.write('<iframe name="app" id="app" height="0" width="0" src="' + deepLink + '"></iframe>');
                                    
             }
-                
-                                   
-
-            
         
         
         
@@ -108,6 +105,8 @@
             
             //e.g. c=12345;
             
+            
+            
             var url = window.location.href;
             
             var index = url.lastIndexOf('/');
@@ -132,9 +131,6 @@
                     
                     return;
                     
-                } else {
-                    launchAndroidApp(deepLink);
-                    return;
                 }
                 
             }
@@ -155,72 +151,11 @@
     
     
     
-    <body style="background-color: #000000;">
-       <iframe style="display:none" height="0" width="0" id="loader"></iframe>
-       
-    
-      <script>(function()
-      {
-
-        // For desktop browser, remember to pass though any metadata on the link for deep linking
-        var fallbackLink = noAppURL;
-        var url = window.location.href;
-            
-            var index = url.lastIndexOf('/');
-            
-            if (index >= 0 && index < url.length) {
-                
-                var deepLink = deepLinkBase + url.substring(index);
-                 // Simple device detection
-        var isiOS = navigator.userAgent.match('iPad') || navigator.userAgent.match('iPhone') || navigator.userAgent.match('iPod'),
-            isAndroid = navigator.userAgent.match('Android');
-   
-        // Mobile
-        if (isiOS || isAndroid) {
-          // Load our custom protocol in the iframe, for Chrome and Opera this burys the error dialog (which is actually HTML)
-          // for iOS we will get a popup error if this protocol is not supported, but it won't block javascript
-          if(navigator.userAgent.toLowerCase().indexOf("android") > -1) {
-                window.location.href = 'intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end'
-                // window.location.href = 'intent://indy.vzw.com/#Intent;scheme=http;package=com.vzw.indycar;end'
-                // window.location.href= 'http://play.google.com/store/apps/details?id=com.vzw.indycar';
-    
-            }
-          document.getElementById('loader').src = deepLink;
-
-          // The fallback link for Android needs to be https:// rather than market:// or the device will try to 
-          // load both URLs and only the last one will win. (Especially FireFox, where an "Are You Sure" dialog will appear)
-          // on iOS we can link directly to the App Store as our app switch will fire prior to the switch
-          // If you have a mobile web app, your fallback could be that instead. 
-          fallbackLink = marketScheme;
-        }
-
-        // Now we just wait for everything to execute, if the user is redirected to your custom app
-        // the timeout below will never fire, if a custom app is not present (or the user is on the Desktop)
-        // we will replace the current URL with the fallbackLink (store URL or desktop URL as appropriate)
-        //  window.setTimeout(function (){ window.location.replace(deepLink); }, 600);
-         window.setTimeout(function (){ window.location.replace(marketScheme); }, 600);
-        //  window.setTimeout(function (){ window.location.replace(noAppURL); }, 600);
-    
-    }
-
-   
-
-
-//     /*
-//       Q&A
-
-//       I have a native desktop app as well, how do I link to a custom protocol handler on the desktop?
-//         IE Only: http://msdn.microsoft.com/en-us/library/ms537512.aspx#Version_Vectors
-//         All Other Browsers: Use a custom plugin like iTunes does: http://ax.itunes.apple.com/detection/itmsCheck.js
-
-//     */
-
-  })();
-  </script>
+    <body onload="launchApp()" style="background-color: #000000;">
+        
         <noscript>Javascript must be enabled to Redirect to INDYCAR 13.</noscript>
         
     </body>
     
 </html>
-
 
