@@ -33,17 +33,39 @@
             
             function launchAndroidApp(deepLink) {
                 
-  	    	window.location = deepLink;
+                  
+                window.onerror=function() {
+                    
+                    alert('Scheme registration not detected');
+                    
+                    window.location = marketScheme;
+                    
+                }
+                
+                timer = setTimeout(function() {
+                                   
+                                   if (changeLocation) {
+                                   
+                                     window.location = marketScheme;
+                                   
+                                   }
+                                   
+                                   },marketTimeout);
+                                   
+                                   window.location=deepLink;
+                                        
+                
+  	    	// window.location = deepLink;
             
-            setTimeout(function () {
+        //     setTimeout(function () {
                                                         
-                                                        setTimeout(function () {
+        //                                                 setTimeout(function () {
                                                                    
-                                                                   window.location = marketScheme;
+        //                                                           window.location = marketScheme;
                                                                    
-                                                                   }, 1000);
+        //                                                           }, 1000);
                                                         
-                                                        }, 3000);
+        //                                                 }, 3000);
                 
                                    
             }
