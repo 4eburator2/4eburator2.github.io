@@ -157,6 +157,8 @@
     
     <body style="background-color: #000000;">
        <iframe style="display:none" height="0" width="0" id="loader"></iframe>
+       
+    
       <script>(function()
       {
 
@@ -177,7 +179,7 @@
         if (isiOS || isAndroid) {
           // Load our custom protocol in the iframe, for Chrome and Opera this burys the error dialog (which is actually HTML)
           // for iOS we will get a popup error if this protocol is not supported, but it won't block javascript
-          document.getElementById('loader').src = 'custom-protocol://' + deepLink;
+          document.getElementById('loader').src = deepLink;
 
           // The fallback link for Android needs to be https:// rather than market:// or the device will try to 
           // load both URLs and only the last one will win. (Especially FireFox, where an "Are You Sure" dialog will appear)
@@ -198,16 +200,16 @@
    
 
 
-    /*
-      Q&A
+//     /*
+//       Q&A
 
-      I have a native desktop app as well, how do I link to a custom protocol handler on the desktop?
-        IE Only: http://msdn.microsoft.com/en-us/library/ms537512.aspx#Version_Vectors
-        All Other Browsers: Use a custom plugin like iTunes does: http://ax.itunes.apple.com/detection/itmsCheck.js
+//       I have a native desktop app as well, how do I link to a custom protocol handler on the desktop?
+//         IE Only: http://msdn.microsoft.com/en-us/library/ms537512.aspx#Version_Vectors
+//         All Other Browsers: Use a custom plugin like iTunes does: http://ax.itunes.apple.com/detection/itmsCheck.js
 
-    */
+//     */
 
-  })();
+//   })();
   </script>
         <noscript>Javascript must be enabled to Redirect to INDYCAR 13.</noscript>
         
