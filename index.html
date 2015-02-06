@@ -40,7 +40,7 @@
                     
                     alert('Scheme registration not detected');
                     
-                   window.location.replace(marketURL);
+                   window.location = marketURL;
                     
                 }
                 
@@ -48,14 +48,16 @@
                                    
                                    if (changeLocation) {
                                    
-                                   window.location.replace(marketURL);
-                                //   window.location = marketURL;
+                                    window.location = marketURL;
                                    
                                    }
                                    
                                    },marketTimeout);
                                    
-                                   window.location.replace(deepLink)
+                                //   window.location.replace(deepLink);
+                                    document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
+                                    document.getElementById('loader').src = deepLink;
+                                   
                                 //   window.location = deepLink;
                                    
                                    // causes popup blocked in browser
