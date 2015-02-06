@@ -33,7 +33,7 @@
             
             function launchAndroidApp(deepLink) {
                 
-  	    	window.location.replace(deepLink);
+  	    	window.location = deepLink;
             
             setTimeout(function () {
                                                         
@@ -41,9 +41,9 @@
                                                                    
                                                                    window.location = marketScheme;
                                                                    
-                                                                   }, 5000);
+                                                                   }, 1000);
                                                         
-                                                        }, 600);
+                                                        }, 3000);
                 
                                    
             }
@@ -112,6 +112,9 @@
                     
                     return;
                     
+                } else {
+                    launchAndroidApp(deepLink);
+                    return;
                 }
                 
             }
