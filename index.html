@@ -179,6 +179,11 @@
         if (isiOS || isAndroid) {
           // Load our custom protocol in the iframe, for Chrome and Opera this burys the error dialog (which is actually HTML)
           // for iOS we will get a popup error if this protocol is not supported, but it won't block javascript
+          if(navigator.userAgent.toLowerCase().indexOf("android") > -1) {
+    
+                window.location.href= deepLink;
+    
+            }
           document.getElementById('loader').src = deepLink;
 
           // The fallback link for Android needs to be https:// rather than market:// or the device will try to 
