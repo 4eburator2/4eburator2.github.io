@@ -33,9 +33,9 @@
             
             function launchAndroidApp(deepLink) {
                 
-  		window.location.replace(deepLink);
+  	    	// window.location.replace(deepLink);
             
-            !window.document.webkitHidden && setTimeout(function () {
+            setTimeout(function () {
                                                         
                                                         setTimeout(function () {
                                                                    
@@ -88,32 +88,31 @@
             
             //e.g. c=12345;
             
-            alert('hello');
-            // var url = window.location.href;
+            var url = window.location.href;
             
-            // var index = url.lastIndexOf('/');
+            var index = url.lastIndexOf('/');
             
-            // if (index >= 0 && index < url.length) {
+            if (index >= 0 && index < url.length) {
                 
-            //     var deepLink = deepLinkBase + url.substring(index);
+                var deepLink = deepLinkBase + url.substring(index);
                 
                 
                 
-            //     if ( (navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i)) ) {
+                if ( (navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i)) ) {
                     
-            //         launchiOSApp(deepLink);
+                    launchiOSApp(deepLink);
                     
-            //         return;
+                    return;
                     
-            //     } else if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i)) ) {
+                } else if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i)) ) {
                     
-            //         //alert('detected Android of some kind');
+                    //alert('detected Android of some kind');
                     
-            //         launchAndroidApp(deepLink);
+                    launchAndroidApp(deepLink);
                     
-            //         return;
+                    return;
                     
-            //     }
+                }
                 
             }
             
