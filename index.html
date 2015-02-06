@@ -12,9 +12,9 @@
             
             var noAppURL = "http://mobile.vzw.com/indycar";
             
-            var noiOSAppURL = "http://indy.vzw.com/itunes/itunes.html";
-            
             var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
+            
+            var itunesURL = "itms-apps://itunes.apple.com/app/id606905722";
             
             var timeout = 5000;
             
@@ -58,8 +58,6 @@
                                     document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
                                     document.getElementById('loader').src = deepLink;
                                    
-                                //   window.location = deepLink;
-                                   
                                    // causes popup blocked in browser
                                    // var win = window.open(deepLink, '_blank');
                                    // win.focus();
@@ -81,7 +79,7 @@
                                                         
                                                         setTimeout(function () {
                                                                    
-                                                                   window.location = noiOSAppURL;
+                                                                   window.location = itunesURL;
                                                                    
                                                                    }, 100);
                                                         
