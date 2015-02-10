@@ -1,161 +1,368 @@
-<html>
-    
-    <!-- App redirect code -->
-    
-    <head>
-        
-        <!--<meta http-equiv="refresh" content="10;url=http://mobile.vzw.com/indycar"/>-->
-        
-        <script type="text/javascript">
-            
-            var deepLinkBase = "indycar://indy.vzw.com";
+<!doctype html>  
+<html lang="ru">  
+<head>  
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+  <title>Приглашение</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript">
+/**
+ * UAParser.js v0.7.3
+ * Lightweight JavaScript-based User-Agent string parser
+ * https://github.com/faisalman/ua-parser-js
+ * 
+ * Copyright © 2012-2014 Faisal Salman <fyzlman@gmail.com>
+ * Dual licensed under GPLv2 & MIT
+ */
+(function(window,undefined){"use strict";var LIBVERSION="0.7.3",EMPTY="",UNKNOWN="?",FUNC_TYPE="function",UNDEF_TYPE="undefined",OBJ_TYPE="object",MAJOR="major",MODEL="model",NAME="name",TYPE="type",VENDOR="vendor",VERSION="version",ARCHITECTURE="architecture",CONSOLE="console",MOBILE="mobile",TABLET="tablet",SMARTTV="smarttv",WEARABLE="wearable",EMBEDDED="embedded";var util={extend:function(regexes,extensions){for(var i in extensions){if("browser cpu device engine os".indexOf(i)!==-1&&extensions[i].length%2===0){regexes[i]=extensions[i].concat(regexes[i])}}return regexes},has:function(str1,str2){if(typeof str1==="string"){return str2.toLowerCase().indexOf(str1.toLowerCase())!==-1}},lowerize:function(str){return str.toLowerCase()}};var mapper={rgx:function(){var result,i=0,j,k,p,q,matches,match,args=arguments;while(i<args.length&&!matches){var regex=args[i],props=args[i+1];if(typeof result===UNDEF_TYPE){result={};for(p in props){q=props[p];if(typeof q===OBJ_TYPE){result[q[0]]=undefined}else{result[q]=undefined}}}j=k=0;while(j<regex.length&&!matches){matches=regex[j++].exec(this.getUA());if(!!matches){for(p=0;p<props.length;p++){match=matches[++k];q=props[p];if(typeof q===OBJ_TYPE&&q.length>0){if(q.length==2){if(typeof q[1]==FUNC_TYPE){result[q[0]]=q[1].call(this,match)}else{result[q[0]]=q[1]}}else if(q.length==3){if(typeof q[1]===FUNC_TYPE&&!(q[1].exec&&q[1].test)){result[q[0]]=match?q[1].call(this,match,q[2]):undefined}else{result[q[0]]=match?match.replace(q[1],q[2]):undefined}}else if(q.length==4){result[q[0]]=match?q[3].call(this,match.replace(q[1],q[2])):undefined}}else{result[q]=match?match:undefined}}}}i+=2}return result},str:function(str,map){for(var i in map){if(typeof map[i]===OBJ_TYPE&&map[i].length>0){for(var j=0;j<map[i].length;j++){if(util.has(map[i][j],str)){return i===UNKNOWN?undefined:i}}}else if(util.has(map[i],str)){return i===UNKNOWN?undefined:i}}return str}};var maps={browser:{oldsafari:{major:{1:["/8","/1","/3"],2:"/4","?":"/"},version:{"1.0":"/8",1.2:"/1",1.3:"/3","2.0":"/412","2.0.2":"/416","2.0.3":"/417","2.0.4":"/419","?":"/"}}},device:{amazon:{model:{"Fire Phone":["SD","KF"]}},sprint:{model:{"Evo Shift 4G":"7373KT"},vendor:{HTC:"APA",Sprint:"Sprint"}}},os:{windows:{version:{ME:"4.90","NT 3.11":"NT3.51","NT 4.0":"NT4.0",2000:"NT 5.0",XP:["NT 5.1","NT 5.2"],Vista:"NT 6.0",7:"NT 6.1",8:"NT 6.2",8.1:"NT 6.3",10:"NT 6.4",RT:"ARM"}}}};var regexes={browser:[[/(opera\smini)\/((\d+)?[\w\.-]+)/i,/(opera\s[mobiletab]+).+version\/((\d+)?[\w\.-]+)/i,/(opera).+version\/((\d+)?[\w\.]+)/i,/(opera)[\/\s]+((\d+)?[\w\.]+)/i],[NAME,VERSION,MAJOR],[/\s(opr)\/((\d+)?[\w\.]+)/i],[[NAME,"Opera"],VERSION,MAJOR],[/(kindle)\/((\d+)?[\w\.]+)/i,/(lunascape|maxthon|netfront|jasmine|blazer)[\/\s]?((\d+)?[\w\.]+)*/i,/(avant\s|iemobile|slim|baidu)(?:browser)?[\/\s]?((\d+)?[\w\.]*)/i,/(?:ms|\()(ie)\s((\d+)?[\w\.]+)/i,/(rekonq)((?:\/)[\w\.]+)*/i,/(chromium|flock|rockmelt|midori|epiphany|silk|skyfire|ovibrowser|bolt|iron)\/((\d+)?[\w\.-]+)/i],[NAME,VERSION,MAJOR],[/(trident).+rv[:\s]((\d+)?[\w\.]+).+like\sgecko/i],[[NAME,"IE"],VERSION,MAJOR],[/(yabrowser)\/((\d+)?[\w\.]+)/i],[[NAME,"Yandex"],VERSION,MAJOR],[/(comodo_dragon)\/((\d+)?[\w\.]+)/i],[[NAME,/_/g," "],VERSION,MAJOR],[/(chrome|omniweb|arora|[tizenoka]{5}\s?browser)\/v?((\d+)?[\w\.]+)/i,/(uc\s?browser|qqbrowser)[\/\s]?((\d+)?[\w\.]+)/i],[NAME,VERSION,MAJOR],[/(dolfin)\/((\d+)?[\w\.]+)/i],[[NAME,"Dolphin"],VERSION,MAJOR],[/((?:android.+)crmo|crios)\/((\d+)?[\w\.]+)/i],[[NAME,"Chrome"],VERSION,MAJOR],[/version\/((\d+)?[\w\.]+).+?mobile\/\w+\s(safari)/i],[VERSION,MAJOR,[NAME,"Mobile Safari"]],[/version\/((\d+)?[\w\.]+).+?(mobile\s?safari|safari)/i],[VERSION,MAJOR,NAME],[/webkit.+?(mobile\s?safari|safari)((\/[\w\.]+))/i],[NAME,[MAJOR,mapper.str,maps.browser.oldsafari.major],[VERSION,mapper.str,maps.browser.oldsafari.version]],[/(konqueror)\/((\d+)?[\w\.]+)/i,/(webkit|khtml)\/((\d+)?[\w\.]+)/i],[NAME,VERSION,MAJOR],[/(navigator|netscape)\/((\d+)?[\w\.-]+)/i],[[NAME,"Netscape"],VERSION,MAJOR],[/(swiftfox)/i,/(icedragon|iceweasel|camino|chimera|fennec|maemo\sbrowser|minimo|conkeror)[\/\s]?((\d+)?[\w\.\+]+)/i,/(firefox|seamonkey|k-meleon|icecat|iceape|firebird|phoenix)\/((\d+)?[\w\.-]+)/i,/(mozilla)\/((\d+)?[\w\.]+).+rv\:.+gecko\/\d+/i,/(polaris|lynx|dillo|icab|doris|amaya|w3m|netsurf)[\/\s]?((\d+)?[\w\.]+)/i,/(links)\s\(((\d+)?[\w\.]+)/i,/(gobrowser)\/?((\d+)?[\w\.]+)*/i,/(ice\s?browser)\/v?((\d+)?[\w\._]+)/i,/(mosaic)[\/\s]((\d+)?[\w\.]+)/i],[NAME,VERSION,MAJOR]],cpu:[[/(?:(amd|x(?:(?:86|64)[_-])?|wow|win)64)[;\)]/i],[[ARCHITECTURE,"amd64"]],[/(ia32(?=;))/i],[[ARCHITECTURE,util.lowerize]],[/((?:i[346]|x)86)[;\)]/i],[[ARCHITECTURE,"ia32"]],[/windows\s(ce|mobile);\sppc;/i],[[ARCHITECTURE,"arm"]],[/((?:ppc|powerpc)(?:64)?)(?:\smac|;|\))/i],[[ARCHITECTURE,/ower/,"",util.lowerize]],[/(sun4\w)[;\)]/i],[[ARCHITECTURE,"sparc"]],[/((?:avr32|ia64(?=;))|68k(?=\))|arm(?:64|(?=v\d+;))|(?=atmel\s)avr|(?:irix|mips|sparc)(?:64)?(?=;)|pa-risc)/i],[[ARCHITECTURE,util.lowerize]]],device:[[/\((ipad|playbook);[\w\s\);-]+(rim|apple)/i],[MODEL,VENDOR,[TYPE,TABLET]],[/applecoremedia\/[\w\.]+ \((ipad)/],[MODEL,[VENDOR,"Apple"],[TYPE,TABLET]],[/(apple\s{0,1}tv)/i],[[MODEL,"Apple TV"],[VENDOR,"Apple"]],[/(archos)\s(gamepad2?)/i,/(hp).+(touchpad)/i,/(kindle)\/([\w\.]+)/i,/\s(nook)[\w\s]+build\/(\w+)/i,/(dell)\s(strea[kpr\s\d]*[\dko])/i],[VENDOR,MODEL,[TYPE,TABLET]],[/(kf[A-z]+)\sbuild\/[\w\.]+.*silk\//i],[MODEL,[VENDOR,"Amazon"],[TYPE,TABLET]],[/(sd|kf)[0349hijorstuw]+\sbuild\/[\w\.]+.*silk\//i],[[MODEL,mapper.str,maps.device.amazon.model],[VENDOR,"Amazon"],[TYPE,MOBILE]],[/\((ip[honed|\s\w*]+);.+(apple)/i],[MODEL,VENDOR,[TYPE,MOBILE]],[/\((ip[honed|\s\w*]+);/i],[MODEL,[VENDOR,"Apple"],[TYPE,MOBILE]],[/(blackberry)[\s-]?(\w+)/i,/(blackberry|benq|palm(?=\-)|sonyericsson|acer|asus|dell|huawei|meizu|motorola|polytron)[\s_-]?([\w-]+)*/i,/(hp)\s([\w\s]+\w)/i,/(asus)-?(\w+)/i],[VENDOR,MODEL,[TYPE,MOBILE]],[/\(bb10;\s(\w+)/i],[MODEL,[VENDOR,"BlackBerry"],[TYPE,MOBILE]],[/android.+(transfo[prime\s]{4,10}\s\w+|eeepc|slider\s\w+|nexus 7)/i],[MODEL,[VENDOR,"Asus"],[TYPE,TABLET]],[/(sony)\s(tablet\s[ps])/i],[VENDOR,MODEL,[TYPE,TABLET]],[/\s(ouya)\s/i,/(nintendo)\s([wids3u]+)/i],[VENDOR,MODEL,[TYPE,CONSOLE]],[/android.+;\s(shield)\sbuild/i],[MODEL,[VENDOR,"Nvidia"],[TYPE,CONSOLE]],[/(playstation\s[3portablevi]+)/i],[MODEL,[VENDOR,"Sony"],[TYPE,CONSOLE]],[/(sprint\s(\w+))/i],[[VENDOR,mapper.str,maps.device.sprint.vendor],[MODEL,mapper.str,maps.device.sprint.model],[TYPE,MOBILE]],[/(lenovo)\s?(S(?:5000|6000)+(?:[-][\w+]))/i],[VENDOR,MODEL,[TYPE,TABLET]],[/(htc)[;_\s-]+([\w\s]+(?=\))|\w+)*/i,/(zte)-(\w+)*/i,/(alcatel|geeksphone|huawei|lenovo|nexian|panasonic|(?=;\s)sony)[_\s-]?([\w-]+)*/i],[VENDOR,[MODEL,/_/g," "],[TYPE,MOBILE]],[/[\s\(;](xbox(?:\sone)?)[\s\);]/i],[MODEL,[VENDOR,"Microsoft"],[TYPE,CONSOLE]],[/(kin\.[onetw]{3})/i],[[MODEL,/\./g," "],[VENDOR,"Microsoft"],[TYPE,MOBILE]],[/\s((milestone|droid(?:[2-4x]|\s(?:bionic|x2|pro|razr))?(:?\s4g)?))[\w\s]+build\//i,/(mot)[\s-]?(\w+)*/i],[[VENDOR,"Motorola"],MODEL,[TYPE,MOBILE]],[/android.+\s(mz60\d|xoom[\s2]{0,2})\sbuild\//i],[MODEL,[VENDOR,"Motorola"],[TYPE,TABLET]],[/android.+((sch-i[89]0\d|shw-m380s|gt-p\d{4}|gt-n8000|sgh-t8[56]9|nexus 10))/i,/((SM-T\w+))/i],[[VENDOR,"Samsung"],MODEL,[TYPE,TABLET]],[/((s[cgp]h-\w+|gt-\w+|galaxy\snexus|sm-n900))/i,/(sam[sung]*)[\s-]*(\w+-?[\w-]*)*/i,/sec-((sgh\w+))/i],[[VENDOR,"Samsung"],MODEL,[TYPE,MOBILE]],[/(samsung);smarttv/i],[VENDOR,MODEL,[TYPE,SMARTTV]],[/\(dtv[\);].+(aquos)/i],[MODEL,[VENDOR,"Sharp"],[TYPE,SMARTTV]],[/sie-(\w+)*/i],[MODEL,[VENDOR,"Siemens"],[TYPE,MOBILE]],[/(maemo|nokia).*(n900|lumia\s\d+)/i,/(nokia)[\s_-]?([\w-]+)*/i],[[VENDOR,"Nokia"],MODEL,[TYPE,MOBILE]],[/android\s3\.[\s\w-;]{10}(a\d{3})/i],[MODEL,[VENDOR,"Acer"],[TYPE,TABLET]],[/android\s3\.[\s\w-;]{10}(lg?)-([06cv9]{3,4})/i],[[VENDOR,"LG"],MODEL,[TYPE,TABLET]],[/(lg) netcast\.tv/i],[VENDOR,MODEL,[TYPE,SMARTTV]],[/(nexus\s[45])/i,/lg[e;\s\/-]+(\w+)*/i],[MODEL,[VENDOR,"LG"],[TYPE,MOBILE]],[/android.+(ideatab[a-z0-9\-\s]+)/i],[MODEL,[VENDOR,"Lenovo"],[TYPE,TABLET]],[/linux;.+((jolla));/i],[VENDOR,MODEL,[TYPE,MOBILE]],[/((pebble))app\/[\d\.]+\s/i],[VENDOR,MODEL,[TYPE,WEARABLE]],[/android.+;\s(glass)\s\d/i],[MODEL,[VENDOR,"Google"],[TYPE,WEARABLE]],[/(mobile|tablet);.+rv\:.+gecko\//i],[[TYPE,util.lowerize],VENDOR,MODEL]],engine:[[/(presto)\/([\w\.]+)/i,/(webkit|trident|netfront|netsurf|amaya|lynx|w3m)\/([\w\.]+)/i,/(khtml|tasman|links)[\/\s]\(?([\w\.]+)/i,/(icab)[\/\s]([23]\.[\d\.]+)/i],[NAME,VERSION],[/rv\:([\w\.]+).*(gecko)/i],[VERSION,NAME]],os:[[/microsoft\s(windows)\s(vista|xp)/i],[NAME,VERSION],[/(windows)\snt\s6\.2;\s(arm)/i,/(windows\sphone(?:\sos)*|windows\smobile|windows)[\s\/]?([ntce\d\.\s]+\w)/i],[NAME,[VERSION,mapper.str,maps.os.windows.version]],[/(win(?=3|9|n)|win\s9x\s)([nt\d\.]+)/i],[[NAME,"Windows"],[VERSION,mapper.str,maps.os.windows.version]],[/\((bb)(10);/i],[[NAME,"BlackBerry"],VERSION],[/(blackberry)\w*\/?([\w\.]+)*/i,/(tizen)[\/\s]([\w\.]+)/i,/(android|webos|palm\os|qnx|bada|rim\stablet\sos|meego|contiki)[\/\s-]?([\w\.]+)*/i,/linux;.+(sailfish);/i],[NAME,VERSION],[/(symbian\s?os|symbos|s60(?=;))[\/\s-]?([\w\.]+)*/i],[[NAME,"Symbian"],VERSION],[/\((series40);/i],[NAME],[/mozilla.+\(mobile;.+gecko.+firefox/i],[[NAME,"Firefox OS"],VERSION],[/(nintendo|playstation)\s([wids3portablevu]+)/i,/(mint)[\/\s\(]?(\w+)*/i,/(mageia|vectorlinux)[;\s]/i,/(joli|[kxln]?ubuntu|debian|[open]*suse|gentoo|arch|slackware|fedora|mandriva|centos|pclinuxos|redhat|zenwalk|linpus)[\/\s-]?([\w\.-]+)*/i,/(hurd|linux)\s?([\w\.]+)*/i,/(gnu)\s?([\w\.]+)*/i],[NAME,VERSION],[/(cros)\s[\w]+\s([\w\.]+\w)/i],[[NAME,"Chromium OS"],VERSION],[/(sunos)\s?([\w\.]+\d)*/i],[[NAME,"Solaris"],VERSION],[/\s([frentopc-]{0,4}bsd|dragonfly)\s?([\w\.]+)*/i],[NAME,VERSION],[/(ip[honead]+)(?:.*os\s*([\w]+)*\slike\smac|;\sopera)/i],[[NAME,"iOS"],[VERSION,/_/g,"."]],[/(mac\sos\sx)\s?([\w\s\.]+\w)*/i,/(macintosh|mac(?=_powerpc)\s)/i],[[NAME,"Mac OS"],[VERSION,/_/g,"."]],[/((?:open)?solaris)[\/\s-]?([\w\.]+)*/i,/(haiku)\s(\w+)/i,/(aix)\s((\d)(?=\.|\)|\s)[\w\.]*)*/i,/(plan\s9|minix|beos|os\/2|amigaos|morphos|risc\sos|openvms)/i,/(unix)\s?([\w\.]+)*/i],[NAME,VERSION]]};var UAParser=function(uastring,extensions){if(!(this instanceof UAParser)){return new UAParser(uastring,extensions).getResult()}var ua=uastring||(window&&window.navigator&&window.navigator.userAgent?window.navigator.userAgent:EMPTY);var rgxmap=extensions?util.extend(regexes,extensions):regexes;this.getBrowser=function(){return mapper.rgx.apply(this,rgxmap.browser)};this.getCPU=function(){return mapper.rgx.apply(this,rgxmap.cpu)};this.getDevice=function(){return mapper.rgx.apply(this,rgxmap.device)};this.getEngine=function(){return mapper.rgx.apply(this,rgxmap.engine)};this.getOS=function(){return mapper.rgx.apply(this,rgxmap.os)};this.getResult=function(){return{ua:this.getUA(),browser:this.getBrowser(),engine:this.getEngine(),os:this.getOS(),device:this.getDevice(),cpu:this.getCPU()}};this.getUA=function(){return ua};this.setUA=function(uastring){ua=uastring;return this};this.setUA(ua)};UAParser.VERSION=LIBVERSION;UAParser.BROWSER={NAME:NAME,MAJOR:MAJOR,VERSION:VERSION};UAParser.CPU={ARCHITECTURE:ARCHITECTURE};UAParser.DEVICE={MODEL:MODEL,VENDOR:VENDOR,TYPE:TYPE,CONSOLE:CONSOLE,MOBILE:MOBILE,SMARTTV:SMARTTV,TABLET:TABLET,WEARABLE:WEARABLE,EMBEDDED:EMBEDDED};UAParser.ENGINE={NAME:NAME,VERSION:VERSION};UAParser.OS={NAME:NAME,VERSION:VERSION};if(typeof exports!==UNDEF_TYPE){if(typeof module!==UNDEF_TYPE&&module.exports){exports=module.exports=UAParser}exports.UAParser=UAParser}else{window.UAParser=UAParser;if(typeof define===FUNC_TYPE&&define.amd){define(function(){return UAParser})}var $=window.jQuery||window.Zepto;if(typeof $!==UNDEF_TYPE){var parser=new UAParser;$.ua=parser.getResult();$.ua.get=function(){return parser.getUA()};$.ua.set=function(uastring){parser.setUA(uastring);var result=parser.getResult();for(var prop in result){$.ua[prop]=result[prop]}}}}})(this);
+  </script>
+  <style>
+    body {
+      margin: 0;
+      background: #0c2327 url(img/background.png) center no-repeat;
+      background-size: cover;
+      font-family: Georgia;
+    }
+    #guilds-logo {
+      width: 442px;
+      height: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 120px;
+      background-image: url(img/lol_logo.png);
+      background-size: 100%;
+    }
+    #invite-text-desktop {
+      width: 500px;
+      height: 180px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 40px;
+      text-align: center;
+    }
+    #invite-text-main-desktop {
+      display: block;
+      color: #d2c7a9;
+      font-size: 20pt;
 
-            var androidDeepLinkBase = "http://indy.vzw.com";
-            
-            var noAppURL = "http://mobile.vzw.com/indycar";
-            
-            var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
-            
-            var itunesURL = "itms-apps://itunes.apple.com/app/id606905722";
-            
-            var timeout = 5000;
-            
-            var marketTimeout = 1000;
-            
-            var changeLocation = true;
-            
-            
-            
-            document.onfocusin = function() {changeLocation = true};
-            
-            document.onfocusout = function() {changeLocation = false};
-            
-            
-            
-            
-            
-            function launchAndroidApp(deepLink) {
-                
-                
-                
-                window.onerror=function() {
-                    
-                    alert('Scheme registration not detected');
-                    
-                    window.location = marketURL;
-                    
-                }
-                
-                timer = setTimeout(function() {
-                                   
-                                   if (changeLocation) {
-                                   
-                                    window.location = marketURL;
-                                   
-                                   }
-                                   
-                                   },marketTimeout);
-                                   
-                                    document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
-                                    document.getElementById('loader').src = deepLink;
-                                   
-                                   // causes popup blocked in browser
-                                   // var win = window.open(deepLink, '_blank');
-                                   // win.focus();
-                                   
-                                   // doesn't work
-                                   //document.write('<iframe name="app" id="app" height="0" width="0" src="' + deepLink + '"></iframe>');
-                                   
+    }
+    #invite-text-extra-desktop {
+      display: block;
+      margin-top: 15px;
+      color: #cbac62;
+      font-size: 16pt;
+    }
+    #university-text-desktop {
+      margin-top: 100px;
+      color: #ff6700;
+      font-size: 16pt;
+      width: 600px;
+      height: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    #desktop-wrap, #android-wrap, #ios-wrap, #error-wrap {
+      display: none;
+    }
+
+    #university-text-mobile {
+      color: #ff6700;
+      font-size: 12pt;
+      text-align: center;
+      margin-top: 18%;
+      margin-bottom: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      
+    }
+    #invite-text-main-mobile {
+      display: block;
+      color: #d2c7a9;
+      font-size: 16pt;
+      text-align: center;
+      margin-top: 15%;
+    }
+    .invite-text-extra-mobile {
+      display: block;
+      margin-top: 10%;
+      color: #cbac62;
+      font-size: 12pt;
+      text-align: center;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .button-install-mobile {
+      display: block;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #dbb05d;
+      height: 64px;
+    }
+    .button-install-text-mobile {
+      font-size: 15pt;
+      display: inline-block;
+      vertical-align: middle;
+      word-wrap: normal;
+    }
+
+    .guilds-icon-mobile {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      margin-right: 10px;
+      width: 48px;
+      height: 48px;
+      vertical-align: middle; 
+    }
+    .button-install-content-mobile {
+      margin-left: auto;
+      margin-right: auto;
+      width: 320px;
+      text-align: center;
+    }
+
+    .invite-button-mobile {
+      background-color: #00a3b6;
+      height: 64px;
+      width: 280px;
+      color: #ffffff;
+      text-align: center;
+      font-size: 14pt;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      border-radius: 4px;
+      display: block;
+      vertical-align: middle; 
+      line-height: 64px;
+    }
+    .invite-button-mobile:hover {
+      background-color: #036a76;
+    }
+
+    #invite-button-mobile span {
+      vertical-align: middle; 
+    }
+
+    #button-install-android-middle, #button-install-ios {
+      margin-top: 10px;
+    }
+    .guilds-icon-mobile-ios {
+      border-radius: 12px;
+    }
+
+    #error-wrap, noscript {
+      color: #ff6700;
+      font-size: 20pt;
+      text-align: center;
+      padding-top: 200px;
+    }
+
+  </style>
+</head>  
+<body>
+  <script type="text/javascript">
+    function launch_app_or_alt_url(el, custom, alt) {
+      //var custom = "riot.guilds://check";
+      //var alt = document.location + "&installed=false";
+      var timer;
+      var heartbeat;
+      var iframe_timer;
+
+      function clearTimers() {
+        clearTimeout(timer);
+        clearTimeout(heartbeat);
+        clearTimeout(iframe_timer);
+      }
+
+      function intervalHeartbeat() {
+        if (document.webkitHidden || document.hidden) {
+          clearTimers();
+        }
+      }
+
+      function tryIframeApproach() {
+        var iframe = document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.width = "1px";
+        iframe.style.height = "1px";
+        iframe.onload = function () {
+          document.location = alt;
+        };
+        iframe.src = custom;
+        document.body.appendChild(iframe);
+      }
+
+      function tryWebkitApproach() {
+        document.location = custom;
+        timer = setTimeout(function () {
+          document.location = alt;
+        }, 2500);
+      }
+      tryWebkitApproach();
+      /*heartbeat = setInterval(intervalHeartbeat, 200);
+      if (navigator.userAgent.match(/Firefox/)) {
+        tryWebkitApproach();
+        iframe_timer = setTimeout(function () {
+          tryIframeApproach();
+        }, 1500);
+      } else {
+        tryIframeApproach();
+      }*/
+    }
+
+    $(document).ready(function() {
+      var ua = new UAParser().getResult();
+      var inviteId = document.location.pathname.split("/")[1];
+      var ok = !!inviteId;
+      var invite_url = "riot.guilds://invitation";
+      var notInstalled = /notinstalled/ig.test(document.location.search);
+      console.log(notInstalled);
+      $.ajax({
+        type: "POST",
+        url: "/api/invite/params/",
+        dataType: "json",
+        data: JSON.stringify({ invite_id: inviteId }),
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+          console.log(data);
+          if(data.error_code !== 0) {
+            ok = false;
+            if(data.error_code == 55) {
+              $(".error-message").text(data.error_message);
             }
-        
-        
-        
-        
-        
-        function launchiOSApp(deepLink) {
-            
-            window.location.replace(deepLink);
-            
-            !window.document.webkitHidden && setTimeout(function () {
-                                                        
-                                                        setTimeout(function () {
-                                                                   
-                                                                   window.location = itunesURL;
-                                                                   
-                                                                   }, 100);
-                                                        
-                                                        }, 600);
-                                                        
-                                                        
-                                                        
+          }
+          else {
+            params = data.result;
+            params.invite_id = inviteId;
+            ["invite_id", "guild_id", "should_apply"].forEach(function(param) {
+              invite_url += "/" + param + "." + encodeURIComponent(params[param]);
+            });
+            console.log(invite_url);
+
+            $(".summoner-name").text(params.summoner_name);
+            $(".guild-title").text(params.guild_title);
+            $(".university-name").text(params.university_name);
+          }
+          render();
+        },
+        error: function(_, status, err) {
+          console.error("connection error");
+          console.error(status, err);
+          ok = false;
+          render();
         }
-        
-        
-        
-        function timeoutAppLaunch() {
-            
-            // hang around for 5 seconds before launching
-            
-            setTimeout("launchApp()",timeout);
-            
+      });
+
+      var render = function() {
+        if(!ok) {
+          $("#error-wrap").show();
         }
-        
-        
-        
-        function launchApp() {
-            
-            // Derive c parameter (e.g. c=12345) from header and pass to subfunction
-            
-            //e.g. c=12345;
-            
-            
-            
-            var url = window.location.href;
-            
-            var index = url.lastIndexOf('/');
-            
-            if (index >= 0 && index < url.length) {
-                
-                
-                
-                
-                
-                if ( (navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i)) ) {
-                    
-                    launchiOSApp(deepLinkBase + url.substring(index));
-                    
-                    return;
-                    
-                } else if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i)) ) {
-                    
-                    launchAndroidApp(androidDeepLinkBase + url.substring(index));
-                    
-                    return;
-                    
-                }
-                
+        else if(ua.os.name.match(/android/ig)) {
+          if(notInstalled) {
+            $("#button-install-android-top").css("visibility", "hidden");
+            $("#invite-text-extra-android-installed").hide();
+            $("#invite-button-android").hide();
+          }
+          else {
+            $("#invite-text-extra-android-not-installed").hide();
+            $("#button-install-android-middle").hide();
+          }
+          $("#button-install-android-top, #button-install-android-middle").click(function() {
+            document.location = "market://details?id=com.riotrus.guilds";
+          });
+          $("#android-wrap").show();
+          $("#invite-button-android").click(function() {
+            launch_app_or_alt_url($(this), invite_url, document.location + "?notinstalled");
+            //document.location = invite_url;
+            event.preventDefault();
+          });
+        }
+        else if(ua.os.name.match(/ios/ig)) {
+          if(notInstalled) {
+            $("#button-install-ios-top").css("visibility", "hidden");
+            $("#invite-text-extra-ios-installed").hide();
+            $("#invite-button-ios").hide();
+          }
+          else {
+            $("#invite-text-extra-ios-not-installed").hide();
+            $("#button-install-ios").hide();
+          }
+
+          $("#university-text-mobile").css({
+            "margin-top": "30%"
+          });
+          $("#ios-wrap").show();
+          $("#invite-button-ios").click(function() {
+            var oldLocation = document.location;
+            if(!notInstalled) {
+              document.location = invite_url;
+              setTimeout(function() {
+                document.location = oldLocation + "?notinstalled";
+              }, 300);
             }
-            
-            
-            
-            
-            
-            //alert('could not detect specific mobile devices. Punting to Verizon.');
-            
-            window.location = noAppURL;
-            
+          });
+          $("#button-install-ios, #button-install-ios-top").click(function() {
+            document.location = "https://itunes.apple.com/us/app/studenceskie-gil-dii-dla-league/id939730353?l=ru&ls=1&mt=8";
+          });
+        } else {
+          $("#desktop-wrap").show();
         }
-        
-            </script>
-        
-    </head>
-    
-    
-    
-    <body onload="launchApp()" style="background-color: #000000;">
-        
-        <noscript>Javascript must be enabled to Redirect to INDYCAR 13.</noscript>
-        
-    </body>
-    
-</html>
+      }
+
+    });
+  </script>
+  <noscript><span>Включите JavaScript</span></noscript> 
+
+  <div id="error-wrap">
+    <span class="error-message">Ошибка</span>
+  </div>
+
+  <div id="desktop-wrap">
+    <div id="guilds-logo"></div>
+    <div id="invite-text-desktop">
+      <div id="invite-text-main-desktop"><span class="summoner-name"></span>&nbsp;пригласил вас в гильдию &nbsp;&laquo;<span class="guild-title"></span>&raquo;</div>
+      <div id="invite-text-extra-desktop">Откройте эту страницу на мобильном устройстве, чтобы вступить в гильдию</div>
+    </div>
+    <div id="university-text-desktop">Приняв это приглашение вы будете играть за &nbsp;&laquo;<span class="university-name"></span>&raquo;</div>
+  </div>
+
+  <div id="android-wrap">
+    <div class="button-install-mobile" id="button-install-android-top">
+      <div class="button-install-content-mobile">
+        <img src="img/icon.png" class="guilds-icon-mobile"></img>
+        <span class="button-install-text-mobile">Установить&nbsp;приложение</span>
+      </div>
+    </div>
+    <div id="invite-text-main-mobile"><span class="summoner-name"></span><br/>пригласил вас в гильдию<br/>&laquo;<span class="guild-title"></span>&raquo;</div>
+    <div class="invite-text-extra-mobile" id="invite-text-extra-android-not-installed">Установите приложение и заново откройте страницу, чтобы принять приглашение</div>
+    <div class="invite-text-extra-mobile" id="invite-text-extra-android-installed">Для подтверждения пройдите по ссылке</div>
+    <div class="button-install-mobile" id="button-install-android-middle">
+      <div class="button-install-content-mobile">
+        <img src="img/icon.png" class="guilds-icon-mobile"></img>
+        <span class="button-install-text-mobile">Установить&nbsp;приложение</span>
+      </div>
+    </div>
+    <div class="invite-button-mobile" id="invite-button-android"><span>Принять приглашение</span></div>
+    <div id="university-text-mobile">Приняв это приглашение вы будете играть за &nbsp;&laquo;<span class="university-name"></span>&raquo;</div>
+  </div>
+
+  <div id="ios-wrap">
+	<div class="button-install-mobile" id="button-install-ios-top">
+      <div class="button-install-content-mobile">
+        <img src="img/icon.png" class="guilds-icon-mobile guilds-icon-mobile-ios"></img>
+        <span class="button-install-text-mobile">Установить&nbsp;приложение</span>
+      </div>
+    </div>
+    <div id="invite-text-main-mobile"><span class="summoner-name"></span><br/>пригласил вас в гильдию<br/>&laquo;<span class="guild-title"></span>&raquo;</div>
+    <div class="invite-text-extra-mobile" id="invite-text-extra-ios-not-installed">Установите приложение и заново откройте страницу, чтобы принять приглашение</div>
+    <div class="invite-text-extra-mobile" id="invite-text-extra-ios-installed">Для подтверждения пройдите по ссылке</div>
+    <div class="button-install-mobile" id="button-install-ios">
+      <div class="button-install-content-mobile">
+        <img src="img/icon.png" class="guilds-icon-mobile guilds-icon-mobile-ios"></img>
+        <span class="button-install-text-mobile">Установить&nbsp;приложение</span>
+      </div>
+    </div>
