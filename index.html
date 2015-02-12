@@ -222,8 +222,7 @@
         if(ua.os.name.match(/android/ig)) {
           $("#invite-text-extra-android-not-installed").hide();
           $("#button-install-android-middle").hide(); 
-        
-          $("#button-install-android-top, #button-install-android-middle").click(function() {
+         $("#button-install-android-top, #button-install-android-middle").click(function() {
             document.location = marketURL;
           });
           $("#android-wrap").show();
