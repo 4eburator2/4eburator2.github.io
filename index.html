@@ -45,18 +45,21 @@
                     
                 }
                 
-                timer = setTimeout(function() {
+                // timer = setTimeout(function() {
                                    
-                                   if (changeLocation) {
+                //                   if (changeLocation) {
                                    
-                                    window.location = marketURL;
+                //                     window.location = marketURL;
                                    
-                                   }
+                //                   }
                                    
-                                   },marketTimeout);
-                                   
-                                    document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
-                                    document.getElementById('loader').src = deepLink;
+                //                   },marketTimeout);
+                                     document.location = deepLink;
+        timer = setTimeout(function () {
+          document.location = marketURL;
+        }, 2500);
+                                    // document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
+                                    // document.getElementById('loader').src = deepLink;
                                    
                                    // causes popup blocked in browser
                                    // var win = window.open(deepLink, '_blank');
