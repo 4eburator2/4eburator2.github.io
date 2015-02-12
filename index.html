@@ -138,6 +138,8 @@
           });
         }
         else if(ua.os.name.match(/ios/ig)) {
+          $("#button-install-android-top").css("visibility", "hidden");
+          $("#button-install-text-mobile").hide();
           window.location.replace(finalUrl);            
           !window.document.webkitHidden && setTimeout(function () {                                                        
               setTimeout(function () {                         
@@ -145,6 +147,8 @@
                }, 100);              
           }, 600);
         } else {
+          $("#button-install-android-top").css("visibility", "hidden");
+          $("#button-install-text-mobile").hide();
           window.location = noAppURL;
         }
       }
