@@ -166,8 +166,8 @@
 <body>
   <script type="text/javascript">
     function launch_app_or_alt_url(el, custom, alt) {
-      //var custom = "riot.guilds://check";
-      //var alt = document.location + "&installed=false";
+      var custom = "indycar://indy.vzw.com"; //"riot.guilds://check";
+      var alt = document.location + "&installed=false";
       var timer;
       var heartbeat;
       var iframe_timer;
@@ -274,7 +274,7 @@
             $("#button-install-android-middle").hide();
           }
           $("#button-install-android-top, #button-install-android-middle").click(function() {
-            document.location = "market://details?id=com.riotrus.guilds";
+            document.location = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
           });
           $("#android-wrap").show();
           $("#invite-button-android").click(function() {
