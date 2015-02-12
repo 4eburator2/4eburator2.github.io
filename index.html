@@ -23,7 +23,9 @@
   <style>
     body {
       margin: 0;
+      background: #0c2327 url(img/background.png) center no-repeat;
       background-size: cover;
+      font-family: Georgia;
     }
     .button-install-mobile {
       display: block;
@@ -61,8 +63,17 @@
     .launch-app-buutton:hover {
       background-color: #036a76;
     }
+    #android-wrap {
+      display: none;
+    }
     #launch-app-buutton span {
       vertical-align: middle; 
+    }
+    #error-wrap, noscript {
+      color: #ff6700;
+      font-size: 20pt;
+      text-align: center;
+      padding-top: 200px;
     }
   </style>
 </head>  
@@ -126,8 +137,6 @@
         var finalUrl = deepLinkBase + params;
 
         if(ua.os.name.match(/android/ig)) {
-          $("#invite-text-extra-android-not-installed").hide();
-          $("#button-install-android-middle").hide(); 
           $("#button-install-android-top, #button-install-android-middle").click(function() {
             document.location = marketURL;
           });
@@ -138,8 +147,6 @@
           });
         }
         else if(ua.os.name.match(/ios/ig)) {
-          $("#button-install-android-top").css("visibility", "hidden");
-          $("#button-install-text-mobile").hide();
           window.location.replace(finalUrl);            
           !window.document.webkitHidden && setTimeout(function () {                                                        
               setTimeout(function () {                         
@@ -147,8 +154,6 @@
                }, 100);              
           }, 600);
         } else {
-          $("#button-install-android-top").css("visibility", "hidden");
-          $("#button-install-text-mobile").hide();
           window.location = noAppURL;
         }
       }
@@ -158,6 +163,11 @@
     });
   </script>
   <noscript><span>Включите JavaScript</span></noscript> 
+
+  <div id="error-wrap">
+    <span class="error-message">Ошибка</span>
+  </div>
+
   <div id="android-wrap">
     <div class="button-install-mobile" id="button-install-android-top">
       <div class="button-install-content-mobile">
@@ -165,5 +175,5 @@
       </div>
     </div>
     
-    <div class="launch-app-button" id="invite-button-android"><span>Open App</span></div>
+    <div class="launch-app-buutton" id="invite-button-android"><span>Open App</span></div>
   </div>
