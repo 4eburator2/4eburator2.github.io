@@ -8,6 +8,9 @@
     <body style="background-color: #000000;">
     <script type="text/javascript">
 
+    var deepLinkBase = "indycar://indy.vzw.com";
+    var androidDeepLinkBase = "indycar://indy.vzw.com";   
+
     function launch_app_or_alt_url(el, custom, alt) {
       //var custom = "riot.guilds://check";
       //var alt = document.location + "&installed=false";
@@ -74,24 +77,27 @@
         var params = url.substring(index);            
             
         if((navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i))) {
-          if(notInstalled) {
-            $("#button-install-android-top").css("visibility", "hidden");
-            $("#invite-text-extra-android-installed").hide();
-            $("#invite-button-android").hide();
-          }
-          else {
-            $("#invite-text-extra-android-not-installed").hide();
-            $("#button-install-android-middle").hide();
-          }
-          $("#button-install-android-top, #button-install-android-middle").click(function() {
-            document.location = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
-          });
-          $("#android-wrap").show();
-          $("#invite-button-android").click(function() {
-            launch_app_or_alt_url($(this), androidDeepLinkBase + params, "http://play.google.com/store/apps/details?id=com.vzw.indycar");
+             launch_app_or_alt_url($(this), androidDeepLinkBase + params, "http://play.google.com/store/apps/details?id=com.vzw.indycar");
             //document.location = invite_url;
             event.preventDefault();
-          });
+          // if(notInstalled) {
+          //   $("#button-install-android-top").css("visibility", "hidden");
+          //   $("#invite-text-extra-android-installed").hide();
+          //   $("#invite-button-android").hide();
+          // }
+          // else {
+          //   $("#invite-text-extra-android-not-installed").hide();
+          //   $("#button-install-android-middle").hide();
+          // }
+          // $("#button-install-android-top, #button-install-android-middle").click(function() {
+          //   document.location = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
+          // });
+          // $("#android-wrap").show();
+          // $("#invite-button-android").click(function() {
+          //   launch_app_or_alt_url($(this), androidDeepLinkBase + params, "http://play.google.com/store/apps/details?id=com.vzw.indycar");
+          //   //document.location = invite_url;
+          //   event.preventDefault();
+          // });
         }
         else if((navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i) {
             launchiOSApp(deepLinkBase + params);
@@ -132,67 +138,67 @@
 
 
 
-            var deepLinkBase = "indycar://indy.vzw.com";
-            var androidDeepLinkBase = "http://indy.vzw.com";            
-            var noAppURL = "http://mobile.vzw.com/indycar";            
-            var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";            
-            var itunesURL = "itms-apps://itunes.apple.com/app/id606905722";            
-            var timeout = 5000;            
-            var marketTimeout = 1000;            
-            var changeLocation = true;     
+            // var deepLinkBase = "indycar://indy.vzw.com";
+            // var androidDeepLinkBase = "http://indy.vzw.com";            
+            // var noAppURL = "http://mobile.vzw.com/indycar";            
+            // var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";            
+            // var itunesURL = "itms-apps://itunes.apple.com/app/id606905722";            
+            // var timeout = 5000;            
+            // var marketTimeout = 1000;            
+            // var changeLocation = true;     
             
-            document.onfocusin = function() {changeLocation = true};            
-            document.onfocusout = function() {changeLocation = false};
+            // document.onfocusin = function() {changeLocation = true};            
+            // document.onfocusout = function() {changeLocation = false};
 
-            function launchAndroidApp(deepLink) {       
-                window.onerror=function() {                    
-                    alert('Scheme registration not detected');                    
-                    window.location = marketURL;                    
-                }                
-                timer = setTimeout(function() {                                   
-                                    if (changeLocation) {                                   
-                                        window.location = marketURL;                                   
-                                    }                                   
-                                    },marketTimeout);
+            // function launchAndroidApp(deepLink) {       
+            //     window.onerror=function() {                    
+            //         alert('Scheme registration not detected');                    
+            //         window.location = marketURL;                    
+            //     }                
+            //     timer = setTimeout(function() {                                   
+            //                         if (changeLocation) {                                   
+            //                             window.location = marketURL;                                   
+            //                         }                                   
+            //                         },marketTimeout);
                                    
-                                    document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
-                                    document.getElementById('loader').src = deepLink;
+            //                         document.write('<iframe style="display:none" height="0" width="0" id="loader"></iframe>');
+            //                         document.getElementById('loader').src = deepLink;
                                    
-            }
+            // }
 
-            function launchiOSApp(deepLink) {            
-                window.location.replace(deepLink);            
-                !window.document.webkitHidden && setTimeout(function () {                                                        
-                                                            setTimeout(function () {                                                                   
-                                                                       window.location = itunesURL;                                                                   
-                                                                       }, 100);                                                        
-                                                            }, 600);
-            }           
+            // function launchiOSApp(deepLink) {            
+            //     window.location.replace(deepLink);            
+            //     !window.document.webkitHidden && setTimeout(function () {                                                        
+            //                                                 setTimeout(function () {                                                                   
+            //                                                            window.location = itunesURL;                                                                   
+            //                                                            }, 100);                                                        
+            //                                                 }, 600);
+            // }           
             
-            function timeoutAppLaunch() {                
-                // hang around for 5 seconds before launching                
-                setTimeout("launchApp()",timeout);                
-            }           
+            // function timeoutAppLaunch() {                
+            //     // hang around for 5 seconds before launching                
+            //     setTimeout("launchApp()",timeout);                
+            // }           
             
-            function launchApp() {                
-                // Derive c parameter (e.g. c=12345) from header and pass to subfunction                
-                //e.g. c=12345;           
+            // function launchApp() {                
+            //     // Derive c parameter (e.g. c=12345) from header and pass to subfunction                
+            //     //e.g. c=12345;           
 
-                var url = window.location.href;                
-                var index = url.lastIndexOf('/');  
-                var params = url.substring(index);            
-                if (index >= 0 && index < url.length) {            
-                    if ( (navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i)) ) {                        
-                        launchiOSApp(deepLinkBase + params);                        
-                        return;                        
-                    } else if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i)) ) {                        
-                        launchAndroidApp(androidDeepLinkBase + params);                        
-                        return;                        
-                    }                    
-                }
+            //     var url = window.location.href;                
+            //     var index = url.lastIndexOf('/');  
+            //     var params = url.substring(index);            
+            //     if (index >= 0 && index < url.length) {            
+            //         if ( (navigator.userAgent.match(/iPhone;/i)) || (navigator.userAgent.match(/iPad;/i)) ) {                        
+            //             launchiOSApp(deepLinkBase + params);                        
+            //             return;                        
+            //         } else if ( (navigator.userAgent.match(/Android/i)) || (navigator.userAgent.match(/Droid/i)) ) {                        
+            //             launchAndroidApp(androidDeepLinkBase + params);                        
+            //             return;                        
+            //         }                    
+            //     }
                 
-                window.location = noAppURL;                
-            }        
+            //     window.location = noAppURL;                
+            // }        
             </script>           
         <noscript>Javascript must be enabled to Redirect to INDYCAR 13.</noscript>        
     </body>
