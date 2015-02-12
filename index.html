@@ -216,47 +216,47 @@
 
     $(document).ready(function() {
       var ua = new UAParser().getResult();
-      var inviteId = document.location.pathname.split("/")[1];
+      var inviteId = "1";// document.location.pathname.split("/")[1];
       var ok = !!inviteId;
       var invite_url = "riot.guilds://invitation";
       var notInstalled = /notinstalled/ig.test(document.location.search);
       console.log(notInstalled);
-      $.ajax({
-        type: "POST",
-        url: "/api/invite/params/",
-        dataType: "json",
-        data: JSON.stringify({ invite_id: inviteId }),
-        contentType: "application/json; charset=utf-8",
-        success: function(data) {
-          console.log(data);
-          if(data.error_code !== 0) {
-            ok = false;
-            if(data.error_code == 55) {
-              $(".error-message").text(data.error_message);
-            }
-          }
-          else {
-            params = data.result;
-            params.invite_id = inviteId;
-            ["invite_id", "guild_id", "should_apply"].forEach(function(param) {
-              invite_url += "/" + param + "." + encodeURIComponent(params[param]);
-            });
-            console.log(invite_url);
+      //$.ajax({
+      //  type: "POST",
+      //  url: "/api/invite/params/",
+      //  dataType: "json",
+      //  data: JSON.stringify({ invite_id: inviteId }),
+      //  contentType: "application/json; charset=utf-8",
+      //  success: function(data) {
+      //    console.log(data);
+      //    if(data.error_code !== 0) {
+      //      ok = false;
+      //      if(data.error_code == 55) {
+      //        $(".error-message").text(data.error_message);
+      //      }
+      //    }
+      //    else {
+      //      params = data.result;
+      //      params.invite_id = inviteId;
+      //      ["invite_id", "guild_id", "should_apply"].forEach(function(param) {
+      //        invite_url += "/" + param + "." + encodeURIComponent(params[param]);
+      //      });
+      //      console.log(invite_url);
 
-            $(".summoner-name").text(params.summoner_name);
-            $(".guild-title").text(params.guild_title);
-            $(".university-name").text(params.university_name);
-          }
-          render();
-        },
-        error: function(_, status, err) {
-          console.error("connection error");
-          console.error(status, err);
-          ok = false;
-          render();
-        }
-      });
-
+      //      $(".summoner-name").text(params.summoner_name);
+      //      $(".guild-title").text(params.guild_title);
+      //      $(".university-name").text(params.university_name);
+      //    }
+      //    render();
+      //  },
+      //  error: function(_, status, err) {
+      //    console.error("connection error");
+      //    console.error(status, err);
+      //    ok = false;
+      //    render();
+      //  }
+      //});
+	render();
       var render = function() {
         if(!ok) {
           $("#error-wrap").show();
