@@ -27,73 +27,6 @@
       background-size: cover;
       font-family: Georgia;
     }
-    #guilds-logo {
-      width: 442px;
-      height: 200px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 120px;
-      background-image: url(img/lol_logo.png);
-      background-size: 100%;
-    }
-    #invite-text-desktop {
-      width: 500px;
-      height: 180px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 40px;
-      text-align: center;
-    }
-    #invite-text-main-desktop {
-      display: block;
-      color: #d2c7a9;
-      font-size: 20pt;
-    }
-    #invite-text-extra-desktop {
-      display: block;
-      margin-top: 15px;
-      color: #cbac62;
-      font-size: 16pt;
-    }
-    #university-text-desktop {
-      margin-top: 100px;
-      color: #ff6700;
-      font-size: 16pt;
-      width: 600px;
-      height: 100px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-    #desktop-wrap, #android-wrap, #ios-wrap, #error-wrap {
-      display: none;
-    }
-    #university-text-mobile {
-      color: #ff6700;
-      font-size: 12pt;
-      text-align: center;
-      margin-top: 18%;
-      margin-bottom: 20px;
-      margin-left: 20px;
-      margin-right: 20px;
-      
-    }
-    #invite-text-main-mobile {
-      display: block;
-      color: #d2c7a9;
-      font-size: 16pt;
-      text-align: center;
-      margin-top: 15%;
-    }
-    .invite-text-extra-mobile {
-      display: block;
-      margin-top: 10%;
-      color: #cbac62;
-      font-size: 12pt;
-      text-align: center;
-      margin-left: 20px;
-      margin-right: 20px;
-    }
     .button-install-mobile {
       display: block;
       background-color: rgba(0, 0, 0, 0.4);
@@ -106,21 +39,13 @@
       vertical-align: middle;
       word-wrap: normal;
     }
-    .guilds-icon-mobile {
-      margin-top: 8px;
-      margin-bottom: 8px;
-      margin-right: 10px;
-      width: 48px;
-      height: 48px;
-      vertical-align: middle; 
-    }
     .button-install-content-mobile {
       margin-left: auto;
       margin-right: auto;
       width: 320px;
       text-align: center;
     }
-    .invite-button-mobile {
+    .launch-app-buutton {
       background-color: #00a3b6;
       height: 64px;
       width: 280px;
@@ -135,17 +60,11 @@
       vertical-align: middle; 
       line-height: 64px;
     }
-    .invite-button-mobile:hover {
+    .launch-app-buutton:hover {
       background-color: #036a76;
     }
-    #invite-button-mobile span {
+    #launch-app-buutton span {
       vertical-align: middle; 
-    }
-    #button-install-android-middle, #button-install-ios {
-      margin-top: 10px;
-    }
-    .guilds-icon-mobile-ios {
-      border-radius: 12px;
     }
     #error-wrap, noscript {
       color: #ff6700;
@@ -203,32 +122,26 @@
     }
     $(document).ready(function() {
       var ua = new UAParser().getResult();
-      var inviteId = "1";// document.location.pathname.split("/")[1];
-      var ok = !!inviteId;
-      var invite_url = "riot.guilds://invitation";
-      var notInstalled = true;
-
       var deepLinkBase = "indycar://indy.vzw.com";  
-      var url = window.location.href;      
-      var index = url.lastIndexOf('/');
-      var params =  url.substring(index);
-      var finalUrl = deepLinkBase + params;
       var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";            
       var itunesURL = "itms-apps://itunes.apple.com/app/id606905722";
       var noAppURL = "http://mobile.vzw.com/indycar";
-      console.log(notInstalled);
     
-      var render = function() {
+      var render = function() {        
+        var url = window.location.href;      
+        var index = url.lastIndexOf('/');
+        var params =  url.substring(index);
+        var finalUrl = deepLinkBase + params;
+
         if(ua.os.name.match(/android/ig)) {
           $("#invite-text-extra-android-not-installed").hide();
           $("#button-install-android-middle").hide(); 
-         $("#button-install-android-top, #button-install-android-middle").click(function() {
+          $("#button-install-android-top, #button-install-android-middle").click(function() {
             document.location = marketURL;
           });
           $("#android-wrap").show();
           $("#invite-button-android").click(function() {
             launch_app_or_alt_url($(this), finalUrl, marketURL);
-            //document.location = invite_url;
             event.preventDefault();
           });
         }
@@ -245,7 +158,6 @@
       }
     
     render();
-    ok = true;
       
     });
   </script>
@@ -262,5 +174,5 @@
       </div>
     </div>
     
-    <div class="invite-button-mobile" id="invite-button-android"><span>Open App</span></div>
+    <div class="launch-app-buutton" id="invite-button-android"><span>Open App</span></div>
   </div>
