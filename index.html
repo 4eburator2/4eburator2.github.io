@@ -1,5 +1,5 @@
 <!doctype html>  
-<html lang="ru">  
+<html lang="en">  
 <head>  
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -158,8 +158,8 @@
 <body>
   <script type="text/javascript">
     function launch_app_or_alt_url(el, custom, alt) {
-      var custom = "indycar://indy.vzw.com"; //"riot.guilds://check";
-      var alt = document.location + "&installed=false";
+      // var custom = "indycar://indy.vzw.com"; //"riot.guilds://check";
+      // var alt = document.location + "&installed=false";
       var timer;
       var heartbeat;
       var iframe_timer;
@@ -206,65 +206,32 @@
       var inviteId = "1";// document.location.pathname.split("/")[1];
       var ok = !!inviteId;
       var invite_url = "riot.guilds://invitation";
-      var notInstalled = /notinstalled/ig.test(document.location.search);
+      var notInstalled = true;
+
+      var deepLinkBase = "indycar://indy.vzw.com";  
+      var url = window.location.href;      
+      var index = url.lastIndexOf('/');
+      var params =  url.substring(index);
+      var finalUrl = deepLinkBase + params;
+      var marketURL = "http://play.google.com/store/apps/details?id=com.vzw.indycar";            
+      var itunesURL = "itms-apps://itunes.apple.com/app/id606905722";
       console.log(notInstalled);
-    //   $.ajax({
-    //     type: "POST",
-    //     url: "/api/invite/params/",
-    //     dataType: "json",
-    //     data: JSON.stringify({ invite_id: inviteId }),
-    //     contentType: "application/json; charset=utf-8",
-    //     success: function(data) {
-    //       console.log(data);
-    //       if(data.error_code !== 0) {
-    //         ok = false;
-    //         if(data.error_code == 55) {
-    //           $(".error-message").text(data.error_message);
-    //         }
-    //       }
-    //       else {
-    //         params = data.result;
-    //         params.invite_id = inviteId;
-    //         ["invite_id", "guild_id", "should_apply"].forEach(function(param) {
-    //           invite_url += "/" + param + "." + encodeURIComponent(params[param]);
-    //         });
-    //         console.log(invite_url);
-    //         $(".summoner-name").text(params.summoner_name);
-    //         $(".guild-title").text(params.guild_title);
-    //         $(".university-name").text(params.university_name);
-    //       }
-    //       render();
-    //     },
-    //     error: function(_, status, err) {
-    //       //console.error("connection error");
-    //       //console.error(status, err);
-    //       //ok = false;
-    //       //render();
-    //         ok = true;
-	
-    //     }
-    //   });
     
     var render = function() {
         if(!ok) {
           $("#error-wrap").show();
         }
         else if(ua.os.name.match(/android/ig)) {
-          if(notInstalled) {
-            $("#button-install-android-top").css("visibility", "hidden");
-            $("#invite-text-extra-android-installed").hide();
-            $("#invite-button-android").hide();
-          }
-          else {
-            $("#invite-text-extra-android-not-installed").hide();
-            $("#button-install-android-middle").hide();
-          }
+          $("#button-install-android-top").css("visibility", "hidden");
+          $("#invite-text-extra-android-installed").hide();
+          $("#invite-button-android").hide();        
+        
           $("#button-install-android-top, #button-install-android-middle").click(function() {
-            document.location = "http://play.google.com/store/apps/details?id=com.vzw.indycar";
+            document.location = marketURL;
           });
           $("#android-wrap").show();
           $("#invite-button-android").click(function() {
-            launch_app_or_alt_url($(this), invite_url, document.location + "?notinstalled");
+            launch_app_or_alt_url($(this), finalUrl, marketURL);
             //document.location = invite_url;
             event.preventDefault();
           });
