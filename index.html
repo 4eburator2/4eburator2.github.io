@@ -244,9 +244,8 @@
 	
     //     }
     //   });
-    render();
-    ok = true;
-      var render = function() {
+    
+    var render = function() {
         if(!ok) {
           $("#error-wrap").show();
         }
@@ -300,6 +299,10 @@
           $("#desktop-wrap").show();
         }
       }
+    
+    render();
+    ok = true;
+      
     });
   </script>
   <noscript><span>Включите JavaScript</span></noscript> 
