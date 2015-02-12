@@ -218,14 +218,11 @@
       var noAppURL = "http://mobile.vzw.com/indycar";
       console.log(notInstalled);
     
-    var render = function() {
-        if(!ok) {
-          $("#error-wrap").show();
-        }
-        else if(ua.os.name.match(/android/ig)) {
+      var render = function() {
+        if(ua.os.name.match(/android/ig)) {
           $("#button-install-android-top").css("visibility", "hidden");
-          $("#invite-text-extra-android-installed").hide();
-          $("#invite-button-android").hide();        
+          $("#invite-text-extra-android-not-installed").hide();
+          $("#button-install-android-middle").hide(); 
         
           $("#button-install-android-top, #button-install-android-middle").click(function() {
             document.location = marketURL;
@@ -238,31 +235,12 @@
           });
         }
         else if(ua.os.name.match(/ios/ig)) {
-          if(notInstalled) {
-            $("#button-install-ios-top").css("visibility", "hidden");
-            $("#invite-text-extra-ios-installed").hide();
-            $("#invite-button-ios").hide();
-          }
-          else {
-            $("#invite-text-extra-ios-not-installed").hide();
-            $("#button-install-ios").hide();
-          }
-          $("#university-text-mobile").css({
-            "margin-top": "30%"
-          });
-          $("#ios-wrap").show();
-          $("#invite-button-ios").click(function() {
-            var oldLocation = document.location;
-            if(!notInstalled) {
-              document.location = invite_url;
-              setTimeout(function() {
-                document.location = oldLocation + "?notinstalled";
-              }, 300);
-            }
-          });
-          $("#button-install-ios, #button-install-ios-top").click(function() {
-            document.location = "https://itunes.apple.com/us/app/studenceskie-gil-dii-dla-league/id939730353?l=ru&ls=1&mt=8";
-          });
+          window.location.replace(deepLink);            
+          !window.document.webkitHidden && setTimeout(function () {                                                        
+              setTimeout(function () {                         
+               window.location = itunesURL;                         
+               }, 100);              
+          }, 600);
         } else {
           window.location = noAppURL;
         }
@@ -277,15 +255,6 @@
 
   <div id="error-wrap">
     <span class="error-message">Ошибка</span>
-  </div>
-
-  <div id="desktop-wrap">
-    <div id="guilds-logo"></div>
-    <div id="invite-text-desktop">
-      <div id="invite-text-main-desktop"><span class="summoner-name"></span>&nbsp;пригласил вас в гильдию &nbsp;&laquo;<span class="guild-title"></span>&raquo;</div>
-      <div id="invite-text-extra-desktop">Откройте эту страницу на мобильном устройстве, чтобы вступить в гильдию</div>
-    </div>
-    <div id="university-text-desktop">Приняв это приглашение вы будете играть за &nbsp;&laquo;<span class="university-name"></span>&raquo;</div>
   </div>
 
   <div id="android-wrap">
